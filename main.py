@@ -306,7 +306,7 @@ if datafile is not None:
 selected_industry = st.sidebar.selectbox('Select a industry', options=list(data.columns))
 # selected_data = data[select_industry]
 chart_visual = st.sidebar.selectbox('Select Charts/Plot type',
-                                    ('Line Chart', 'Bar Chart', 'Bubble Chart'))
+                                    ('Line Chart', 'Bar Chart'))
 selecteddate = st.sidebar.date_input("Sales Prediction for next month", datetime.date.today())
 nextmonth = selecteddate.replace(day=1) + relativedelta.relativedelta(months=1)
 
@@ -347,12 +347,12 @@ if selected_industry == 'Department Stores':
             st.line_chart(df[['Sales', 'forecast']])
             value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
             if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime("%Y/%m/%d"))
+                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime("%Y-%m-%d"))
             else:
                 st.write("Prediction: Sales Decrease For Next Month")
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
-            st.write('Bar Chart for '+startdate.strftime("%Y/%m/%d")+' '+enddate.strftime("%Y/%m/%d"))
+            st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
     else:
         model = sm.tsa.statespace.SARIMAX(dept_stores_data[selected_industry], order=(1, 1, 1),
                                           seasonal_order=(1, 1, 1, 12))
@@ -368,9 +368,9 @@ if selected_industry == 'Department Stores':
                                                        end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(dept_stores_data[[selected_industry, 'forecast']])
-            value = dept_stores_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
+            value = dept_stores_data.diff()._get_value(to.datetime(nextmonth.strftime("%Y-%m-%d")), 'forecast')
             if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime("%Y/%m/%d"))
+                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime("%Y-%m-%d"))
             else:
                 st.write("Prediction: Sales Decrease For Next Month")
         if chart_visual == 'Bar Chart':
