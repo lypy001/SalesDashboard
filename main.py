@@ -342,12 +342,12 @@ if selected_industry == 'Department Stores':
         df = pd.concat([df, pred_date])
         df["Sales"] = df["Sales"].astype(np.float64)
 
-        df['forecast'] = results.predict(start=startdate.strftime("%Y/%m/%d"), end=enddate.strftime("%Y/%m/%d"), dynamic=True)
+        df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y/%m/%d"), 'forecast')
+            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
             if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
+                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime("%Y/%m/%d"))
             else:
                 st.write("Prediction: Sales Decrease For Next Month")
         if chart_visual == 'Bar Chart':
@@ -364,13 +364,13 @@ if selected_industry == 'Department Stores':
         dept_stores_data = pd.concat([dept_stores_data, pred_date])
         dept_stores_data[selected_industry] = dept_stores_data[selected_industry].astype(np.float64)
 
-        dept_stores_data['forecast'] = results.predict(start=startdate.strftime("%Y/%m/%d"),
-                                                       end=enddate.strftime("%Y/%m/%d"), dynamic=True)
+        dept_stores_data['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"),
+                                                       end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(dept_stores_data[[selected_industry, 'forecast']])
-            value = dept_stores_data.diff()._get_value(nextmonth.strftime("%Y/%m/%d"), 'forecast')
+            value = dept_stores_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
             if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
+                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime("%Y/%m/%d"))
             else:
                 st.write("Prediction: Sales Decrease For Next Month")
         if chart_visual == 'Bar Chart':
