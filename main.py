@@ -345,11 +345,7 @@ if selected_industry == 'Department Stores':
         df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime("%Y-%m-%d"))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -401,11 +397,7 @@ if selected_industry == 'Supermarkets & Hypermarkets':
         df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+           
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -427,11 +419,7 @@ if selected_industry == 'Supermarkets & Hypermarkets':
 
         if chart_visual == 'Line Chart':
             st.line_chart(supermarket_data[[selected_industry, 'forecast']])
-            value = supermarket_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+           
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
             st.bar_chart(supermarket_data[['forecast']], width=250, height=250)
@@ -463,10 +451,7 @@ if selected_industry == 'Mini-Marts & Convenience Stores':
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
             value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+           
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -481,15 +466,11 @@ if selected_industry == 'Mini-Marts & Convenience Stores':
         mart_data = pd.concat([mart_data, pred_date])
         mart_data[selected_industry] = mart_data[selected_industry].astype(np.float64)
 
-        mart_data['forecast'] = results.predict(start=169, end=194, dynamic=True)
+        mart_data['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
 
         if chart_visual == 'Line Chart':
             st.line_chart(mart_data[[selected_industry, 'forecast']])
-            value = mart_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
             st.bar_chart(mart_data[['forecast']], width=250, height=250)
@@ -522,11 +503,7 @@ if selected_industry == 'Food & Alcohol':
         df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -541,15 +518,12 @@ if selected_industry == 'Food & Alcohol':
         food_data = pd.concat([food_data, pred_date])
         food_data[selected_industry] = food_data[selected_industry].astype(np.float64)
 
-        food_data['forecast'] = results.predict(start=169, end=194, dynamic=True)
+        food_data['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
 
         if chart_visual == 'Line Chart':
             st.line_chart(food_data[[selected_industry, 'forecast']])
             value = food_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+           
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
             st.bar_chart(food_data[['forecast']], width=250, height=250)
@@ -582,10 +556,7 @@ if selected_industry == 'Motor Vehicles':
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
             value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+           
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -600,15 +571,11 @@ if selected_industry == 'Motor Vehicles':
         motorvhe_data = pd.concat([motorvhe_data, pred_date])
         motorvhe_data[selected_industry] = motorvhe_data[selected_industry].astype(np.float64)
 
-        motorvhe_data['forecast'] = results.predict(start=169, end=194, dynamic=True)
+        motorvhe_data['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
 
         if chart_visual == 'Line Chart':
             st.line_chart(motorvhe_data[[selected_industry, 'forecast']])
-            value = motorvhe_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+           
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
             st.bar_chart(motorvhe_data[['forecast']], width=250, height=250)
@@ -640,11 +607,7 @@ if selected_industry == 'Petrol Service Stations':
         df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+           
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -659,15 +622,11 @@ if selected_industry == 'Petrol Service Stations':
         petrol_data = pd.concat([petrol_data, pred_date])
         petrol_data[selected_industry] = petrol_data[selected_industry].astype(np.float64)
 
-        petrol_data['forecast'] = results.predict(start=169, end=194, dynamic=True)
+        petrol_data['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
 
         if chart_visual == 'Line Chart':
             st.line_chart(petrol_data[[selected_industry, 'forecast']])
-            value = petrol_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
             st.bar_chart(petrol_data[['forecast']], width=250, height=250)
@@ -700,10 +659,7 @@ if selected_industry == 'Cosmetics, Toiletries & Medical Goods':
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
             value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+           
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -718,16 +674,13 @@ if selected_industry == 'Cosmetics, Toiletries & Medical Goods':
             cosemetic_data = pd.concat([cosemetic_data, pred_date])
             cosemetic_data[selected_industry] = cosemetic_data[selected_industry].astype(np.float64)
 
-            cosemetic_data['forecast'] = results.predict(start=169, end=194, dynamic=True)
+            cosemetic_data['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
 
 
             if chart_visual == 'Line Chart':
                 st.line_chart(cosemetic_data[[selected_industry, 'forecast']])
                 value = cosemetic_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-                if value > 0:
-                    st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-                else:
-                    st.write("Prediction: Sales Decrease For Next Month")
+                
             if chart_visual == 'Bar Chart':
                 st.write("Bar Chart For Prediction Value")
                 st.bar_chart(cosemetic_data[['forecast']], width=250, height=250)
@@ -759,11 +712,7 @@ if selected_industry == 'Wearing Apparel & Footwear':
         df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -778,15 +727,11 @@ if selected_industry == 'Wearing Apparel & Footwear':
         apparel_data = pd.concat([apparel_data, pred_date])
         apparel_data[selected_industry] = apparel_data[selected_industry].astype(np.float64)
 
-        apparel_data['forecast'] = results.predict(start=169, end=194, dynamic=True)
+        apparel_data['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
 
         if chart_visual == 'Line Chart':
             st.line_chart(apparel_data[[selected_industry, 'forecast']])
-            value = apparel_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
             st.bar_chart(apparel_data[['forecast']], width=250, height=250)
@@ -818,11 +763,7 @@ if selected_industry == 'Furniture & Household Equipment':
         df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -837,15 +778,12 @@ if selected_industry == 'Furniture & Household Equipment':
         hseholdEqm_data = pd.concat([hseholdEqm_data, pred_date])
         hseholdEqm_data[selected_industry] = hseholdEqm_data[selected_industry].astype(np.float64)
 
-        hseholdEqm_data['forecast'] = results.predict(start=169, end=194, dynamic=True)
+        hseholdEqm_data['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
 
         if chart_visual == 'Line Chart':
             st.line_chart(hseholdEqm_data[[selected_industry, 'forecast']])
             value = hseholdEqm_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+         
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
             st.bar_chart(hseholdEqm_data[['forecast']], width=250, height=250)
@@ -877,11 +815,7 @@ if selected_industry == 'Recreational Goods':
         df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -896,15 +830,11 @@ if selected_industry == 'Recreational Goods':
         rctGoods_data = pd.concat([rctGoods_data, pred_date])
         rctGoods_data[selected_industry] = rctGoods_data[selected_industry].astype(np.float64)
 
-        rctGoods_data['forecast'] = results.predict(start=169, end=194, dynamic=True)
+        rctGoods_data['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
 
         if chart_visual == 'Line Chart':
             st.line_chart(rctGoods_data[[selected_industry, 'forecast']])
-            value = rctGoods_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
             st.bar_chart(rctGoods_data[['forecast']], width=250, height=250)
@@ -936,11 +866,7 @@ if selected_industry == 'Watches & Jewellery':
         df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -955,15 +881,10 @@ if selected_industry == 'Watches & Jewellery':
         accessory_data = pd.concat([accessory_data, pred_date])
         accessory_data[selected_industry] = accessory_data[selected_industry].astype(np.float64)
 
-        accessory_data['forecast'] = results.predict(start=169, end=194, dynamic=True)
-
+        accessory_data['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(accessory_data[[selected_industry, 'forecast']])
-            value = accessory_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
             st.bar_chart(accessory_data[['forecast']], width=250, height=250)
@@ -995,11 +916,7 @@ if selected_industry == 'Computer & Telecommunications Equipment':
         df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -1014,15 +931,11 @@ if selected_industry == 'Computer & Telecommunications Equipment':
         electronics_data = pd.concat([electronics_data, pred_date])
         electronics_data[selected_industry] = electronics_data[selected_industry].astype(np.float64)
 
-        electronics_data['forecast'] = results.predict(start=169, end=194, dynamic=True)
+        electronics_data['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
 
         if chart_visual == 'Line Chart':
             st.line_chart(electronics_data[[selected_industry, 'forecast']])
-            value = electronics_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
             st.bar_chart(electronics_data[['forecast']], width=250, height=250)
@@ -1054,11 +967,7 @@ if selected_industry == 'Optical Goods & Books':
         df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
             st.write('Bar Chart for '+startdate.strftime("%Y-%m-%d")+' '+enddate.strftime("%Y-%m-%d"))
@@ -1073,7 +982,7 @@ if selected_industry == 'Optical Goods & Books':
         optical_data = pd.concat([optical_data, pred_date])
         optical_data[selected_industry] = optical_data[selected_industry].astype(np.float64)
 
-        optical_data['forecast'] = results.predict(start=169, end=194, dynamic=True)
+        optical_data['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
 
         if chart_visual == 'Line Chart':
             st.line_chart(optical_data[[selected_industry, 'forecast']])
