@@ -368,7 +368,7 @@ if selected_industry == 'Department Stores':
                                                        end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(dept_stores_data[[selected_industry, 'forecast']])
-            value = dept_stores_data.diff()._get_value(to.datetime(nextmonth.strftime("%Y-%m-%d")), 'forecast')
+            value = dept_stores_data.diff()._get_value(pd.to.datetime(nextmonth.strftime("%Y-%m-%d")), 'forecast')
             if value > 0:
                 st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime("%Y-%m-%d"))
             else:
