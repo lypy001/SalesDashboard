@@ -40,8 +40,7 @@ import plotly.graph_objects as go
 # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 # application = get_wsgi_application()
 
-st.write("DB username:", st.secrets["db_username"])
-st.write("DB password:", st.secrets["db_password"])
+
 
 DATA_URL = ('RetailSalesIndex.csv')
 @st.cache
