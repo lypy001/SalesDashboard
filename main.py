@@ -39,6 +39,12 @@ import plotly.graph_objects as go
 # from djangoProject1.wsgi import get_wsgi_application
 # os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
 # application = get_wsgi_application()
+# implementing streamlit
+st.set_page_config(
+    page_title="Real-Time Data Science Dashboard",
+    page_icon="✅",
+    layout="wide",
+)
 
 def check_password():
     """Returns `True` if the user had the correct password."""
@@ -279,12 +285,7 @@ def get_diff(data, name):
 # data['Supermarkets & Hypermarkets'] = data['Supermarkets & Hypermarkets'].astype(np.float64)
 
 
-# implementing streamlit
-st.set_page_config(
-    page_title="Real-Time Data Science Dashboard",
-    page_icon="✅",
-    layout="wide",
-)
+
 def save_uploadedfile(uploadedfile):
     with open(os.path.join( uploadedfile.name), "wb") as f:
         f.write(uploadedfile.getbuffer())
