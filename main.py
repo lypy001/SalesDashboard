@@ -308,7 +308,7 @@ selected_industry = st.sidebar.selectbox('Select a industry', options=list(data.
 chart_visual = st.sidebar.selectbox('Select Charts/Plot type',
                                     ('Line Chart', 'Bar Chart'))
 # selecteddate = st.sidebar.date_input("Sales Prediction for next month", datetime.date.today())
-nextmonth = selecteddate.replace(day=1) + relativedelta.relativedelta(months=1)
+# nextmonth = selecteddate.replace(day=1) + relativedelta.relativedelta(months=1)
 
 startdate = st.sidebar.date_input("Predict Start Date", datetime.date.today())
 enddate = startdate.replace(day=1) + relativedelta.relativedelta(months=12)
