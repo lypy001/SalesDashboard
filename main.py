@@ -522,7 +522,7 @@ if selected_industry == 'Food & Alcohol':
 
         if chart_visual == 'Line Chart':
             st.line_chart(food_data[[selected_industry, 'forecast']])
-            value = food_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
+            
            
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
@@ -555,7 +555,7 @@ if selected_industry == 'Motor Vehicles':
         df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
+            
            
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
@@ -658,7 +658,7 @@ if selected_industry == 'Cosmetics, Toiletries & Medical Goods':
         df['forecast'] = results.predict(start=startdate.strftime("%Y-%m-%d"), end=enddate.strftime("%Y-%m-%d"), dynamic=True)
         if chart_visual == 'Line Chart':
             st.line_chart(df[['Sales', 'forecast']])
-            value = df.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
+            
            
         if chart_visual == 'Bar Chart':
             st.bar_chart(df[['forecast']], width=250, height=250)
@@ -679,7 +679,7 @@ if selected_industry == 'Cosmetics, Toiletries & Medical Goods':
 
             if chart_visual == 'Line Chart':
                 st.line_chart(cosemetic_data[[selected_industry, 'forecast']])
-                value = cosemetic_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
+                
                 
             if chart_visual == 'Bar Chart':
                 st.write("Bar Chart For Prediction Value")
@@ -782,7 +782,7 @@ if selected_industry == 'Furniture & Household Equipment':
 
         if chart_visual == 'Line Chart':
             st.line_chart(hseholdEqm_data[[selected_industry, 'forecast']])
-            value = hseholdEqm_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
+            
          
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
@@ -986,11 +986,7 @@ if selected_industry == 'Optical Goods & Books':
 
         if chart_visual == 'Line Chart':
             st.line_chart(optical_data[[selected_industry, 'forecast']])
-            value = optical_data.diff()._get_value(nextmonth.strftime("%Y-%m-%d"), 'forecast')
-            if value > 0:
-                st.write("Prediction: Sales Increase For Next Month " + nextmonth.strftime('%B %Y'))
-            else:
-                st.write("Prediction: Sales Decrease For Next Month")
+            
         if chart_visual == 'Bar Chart':
             st.write("Bar Chart For Prediction Value")
             st.bar_chart(optical_data[['forecast']], width=250, height=250)
